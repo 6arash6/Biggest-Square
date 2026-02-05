@@ -1,0 +1,28 @@
+# Compiled files
+*.o
+*.out
+*.a
+a.out
+
+# Test directories
+mini-moul/
+**/mini-moul/
+
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Output files
+output.txt
+*.txt
+
+# Debugging
+*.dSYM/
+vgcore.*
+
+# Editor files
+.vscode/
+.idea/
+*.code-workspace
