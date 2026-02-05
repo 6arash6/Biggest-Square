@@ -22,8 +22,9 @@ source ~/.bashrc  # or ~/.zshrc if using zsh
 bash install-hooks.sh
 ```
 
-### Quick Reference
-See [QUICKREF.md](QUICKREF.md) for detailed commands and tips.
+### Documentation
+- **[QUICKREF.md](QUICKREF.md)** - Quick reference for daily commands and tips
+- **[HOW_IT_WORKS.md](HOW_IT_WORKS.md)** - Deep dive into how the automation works
 
 ## Testing
 
@@ -70,6 +71,17 @@ The repository includes 42header plugin configuration:
 - [Norminette](https://github.com/42School/norminette) - 42 coding style checker
 - [Mini Moulinette](https://github.com/k11q/mini-moulinette) - Automated test runner
 - [42header](https://github.com/42Paris/42header) - Vim header plugin
+
+## How It Works
+
+Want to understand how the automation works under the hood?
+
+See **[HOW_IT_WORKS.md](HOW_IT_WORKS.md)** for a comprehensive explanation of:
+- 🔧 Setup script internals
+- 🪝 Git hooks mechanics
+- 🤖 CI/CD pipeline workflow
+- 🧪 Testing tools deep dive
+- 📊 Architecture diagrams
 
 ## Author
 
