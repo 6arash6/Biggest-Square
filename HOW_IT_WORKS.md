@@ -10,6 +10,7 @@ This document explains how the automated setup, testing, and CI/CD pipeline work
 5. [Testing Tools Internals](#testing-tools-internals)
 6. [Workflow Diagram](#workflow-diagram)
 7. [Directory Structure](#directory-structure)
+8. [Exam Practice Resources](#exam-practice-resources)
 
 ---
 
@@ -480,6 +481,220 @@ campus/
 - **README.md**: User-facing documentation
 - **QUICKREF.md**: Command reference for daily use
 - **HOW_IT_WORKS.md**: This file - explains internals
+
+---
+
+## Exam Practice Resources
+
+### Overview
+
+The **Exams Practice** directory provides structured exercises organized by difficulty levels (Exam00-Exam03) to help prepare for 42 Piscine exams. This section explains how to use these resources effectively and points to additional community resources.
+
+### Local Exam Practice Structure
+
+```
+Exams Practice/
+├── Exam00/              # Entry level (0-4 difficulty)
+├── Exam01/              # Level 1 (5-9 difficulty)
+├── Exam02/              # Level 2 (10-14 difficulty)
+├── Exam03/              # Level 3 (advanced)
+└── README.md            # Practice guidelines
+```
+
+### How to Practice
+
+The exam practice follows the actual 42 exam environment:
+
+1. **Setup**: Open two terminals side by side
+   - **Left**: View the exercise subject/requirements
+   - **Right**: Write your solution in vim
+
+2. **No Norminette Required**: During actual exams, norminette is NOT checked
+   - Focus on functionality and correctness
+   - No need for 42 headers
+   - Standard C coding is sufficient
+
+3. **Time-boxed Practice**: Simulate exam conditions
+   - Set a timer (typically 1-3 hours per exam level)
+   - Work through exercises sequentially
+   - Don't look at solutions until completing your attempt
+
+4. **Submission Workflow** (in practice):
+   ```bash
+   cd "Exams Practice/Exam00"
+   vim rendu/my_solution.c
+   # Write your code
+   gcc -Wall -Wextra -Werror my_solution.c
+   ./a.out  # Test your program
+   ```
+
+### Exercise Level System
+
+42 exams use a level-based progression system:
+
+| Level | Difficulty | Exam Folder | Typical Exercises |
+|-------|-----------|-------------|-------------------|
+| 0     | Beginner  | Exam00      | Basic output, simple loops |
+| 1     | Easy      | Exam00      | String manipulation, basic functions |
+| 2     | Medium    | Exam01      | Array operations, parsing |
+| 3     | Medium-Hard | Exam02    | Recursion, bit manipulation |
+| 4     | Hard      | Exam02      | Linked lists, complex algorithms |
+| 5     | Advanced  | Exam03      | Advanced data structures |
+
+You must pass a certain percentage of exercises at each level to advance in the actual exam.
+
+### External Community Resources
+
+The 42 community has created valuable exam practice repositories that complement this collection:
+
+#### 1. **examshell by gcamerli**
+- **Repository**: [github.com/gcamerli/examshell](https://github.com/gcamerli/examshell)
+- **Levels**: 0-5 (comprehensive coverage)
+- **Content**:
+  - Level 0: 8 basic exercises (aff_a, aff_first_param, maff_alpha, etc.)
+  - Level 1: 14 fundamental exercises (first_word, ft_strlen, rot_13, etc.)
+  - Level 2-5: Progressive difficulty with 7-15 exercises per level
+- **Status**: Solutions provided for Levels 0-1 as reference
+- **Use Case**: Great for understanding the exam structure and getting started
+- **Note**: Repository is archived but still valuable for reference
+
+#### 2. **42-Piscine-C by AlexandreDesponds**
+- **Repository**: [github.com/AlexandreDesponds/42-Piscine-C/tree/master/Exam](https://github.com/AlexandreDesponds/42-Piscine-C/tree/master/Exam)
+- **Content**: Real exam exercises with solutions
+- **Use Case**: Compare your solutions and learn different approaches
+- **Includes**: Various exam levels from actual Piscine experience
+
+### Exam Strategy Tips
+
+Based on the exam shell structure:
+
+1. **Master the Fundamentals** (Levels 0-1)
+   - These are "gift" levels - should be quick and easy
+   - Practice until you can complete them in < 15 minutes
+   - Exercises: ft_strlen, ft_putstr, first_word, rot_13
+
+2. **Build Speed** (Level 2)
+   - Medium difficulty requires solid understanding
+   - Common topics: ft_atoi, string comparison, bit operations
+   - Time goal: 20-30 minutes per exercise
+
+3. **Advanced Preparation** (Levels 3-5)
+   - Requires deep C knowledge
+   - Topics: Linked lists, recursion, complex algorithms
+   - Focus on correctness over speed
+
+4. **Common Exam Pitfalls**
+   - Off-by-one errors in loops
+   - NULL pointer handling
+   - Memory allocation/deallocation
+   - Edge cases (empty strings, negative numbers)
+
+### Practice Workflow
+
+```
+Start Exam Practice
+        │
+        ▼
+┌───────────────────┐
+│ Choose Level      │
+│ (Start at 0)      │
+└────────┬──────────┘
+         │
+         ▼
+┌───────────────────┐
+│ Read Subject      │
+│ Understand Reqs   │
+└────────┬──────────┘
+         │
+         ▼
+┌───────────────────┐
+│ Write Solution    │
+│ (No copying!)     │
+└────────┬──────────┘
+         │
+         ▼
+┌───────────────────┐
+│ Compile & Test    │
+│ gcc -Wall -Wextra │
+└────────┬──────────┘
+         │
+         ▼
+┌───────────────────┐
+│ Debug if Needed   │
+│ Fix Errors        │
+└────────┬──────────┘
+         │
+         ▼
+┌───────────────────┐
+│ Compare Solution  │
+│ Learn Approach    │
+└───────────────────┘
+```
+
+### Differences: Practice vs. Assignments
+
+| Aspect | Piscine Assignments (C00-C13) | Exam Practice |
+|--------|------------------------------|---------------|
+| Norminette | ✅ Required | ❌ Not checked |
+| 42 Header | ✅ Required | ❌ Not needed |
+| Testing | Mini Moulinette, CI/CD | Manual testing |
+| Time Limit | Days to complete | Hours per exam |
+| Collaboration | Limited/None | Solo only |
+| Style | Strict 42 norm | Standard C |
+
+### Using External Resources Effectively
+
+**During Practice** (Learning Phase):
+- ✅ Study solutions from examshell and other repos
+- ✅ Understand different approaches
+- ✅ Learn from commented code
+- ✅ Practice the same exercise multiple times
+
+**During Timed Practice** (Exam Simulation):
+- ❌ Don't look at solutions
+- ❌ Don't use external references
+- ✅ Only use `man` pages (as in real exam)
+- ✅ Rely on your knowledge and practice
+
+**After Completing Exercise**:
+- ✅ Compare with community solutions
+- ✅ Identify better approaches
+- ✅ Note patterns and techniques
+- ✅ Add to your mental toolbox
+
+### Recommended Practice Schedule
+
+**Week 1-2**: Foundations
+- Practice Level 0-1 exercises daily
+- Build muscle memory for common patterns
+- Master string manipulation and basic I/O
+
+**Week 3-4**: Intermediate Skills
+- Level 2-3 exercises
+- Focus on algorithms and data structures
+- Practice with time limits
+
+**Week 5+**: Advanced & Speed
+- Level 4-5 exercises
+- Full exam simulations (timed, multiple levels)
+- Review weak areas
+
+### Additional Resources
+
+- **Exam Shell Practice**: Practice in a terminal-only environment
+- **Man Pages**: Get comfortable with `man` command (your only reference in exams)
+- **GDB Debugger**: Learn basic debugging without IDE
+- **Valgrind**: Check for memory leaks (not required in exam but good practice)
+
+### Key Takeaway
+
+The exam practice resources (both local and external) are designed to help you:
+- Build confidence with time pressure
+- Recognize common exercise patterns
+- Develop problem-solving speed
+- Prepare for the real exam environment
+
+Remember: **Practice doesn't make perfect. Perfect practice makes perfect.**
 
 ---
 
