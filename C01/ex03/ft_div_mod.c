@@ -1,0 +1,9 @@
+/*
+** ex03 - ft_div_mod.c
+** Divide and modulo two integers, store results in pointers.
+*/
+void ft_div_mod(int a, int b, int *div, int *mod)
+{
+    *div = a / b;
+    *mod = a % b;
+}
