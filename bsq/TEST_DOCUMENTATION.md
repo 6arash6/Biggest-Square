@@ -2,7 +2,7 @@
 
 ## Overview
 
-This comprehensive test suite is designed to catch all possible edge cases and failure points in the BSQ program. It includes 40+ test cases covering valid maps, invalid maps, stress tests, and special scenarios.
+This comprehensive test suite is designed to catch all possible edge cases and failure points in the BSQ program. It includes 35 test cases covering valid maps, invalid maps, stress tests, and special scenarios — current status: **35/35** passing (valgrind clean; norminette clean).
 
 ## Test Categories
 
