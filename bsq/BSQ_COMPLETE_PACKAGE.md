@@ -337,11 +337,6 @@ If you encounter issues:
    - Use valgrind for leaks
    - Add debug prints
 
-4. **Ask for Help**
-   - 42 peers
-   - 42 staff
-   - Online resources
-
 ---
 
 ## 🎉 Success Criteria
