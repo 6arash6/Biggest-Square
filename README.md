@@ -8,18 +8,34 @@ bsq/
 ├── include/
 │   └── bsq.h             # Header file (Norm compliant)
 ├── src/
-│   ├── main.c            # Entry point
-│   ├── ft_create_map.c   # Map creation and cleanup
-│   ├── ft_get_matrix.c   # Matrix parsing from file/stdin
-│   ├── ft_get_line.c     # Line reading utility
-│   ├── ft_process_map.c  # DP algorithm and output
-│   └── ft_util.c         # Utility functions
-├── test_maps/            # 30 test map files
+│   ├── main.c
+│   ├── ft_create_map.c
+│   ├── ft_fill_matrix.c
+│   ├── ft_free_map.c
+│   ├── ft_get_line.c
+│   ├── ft_get_matrix.c
+│   ├── ft_mark_square.c
+│   ├── ft_memory.c
+│   ├── ft_parse_header.c
+│   ├── ft_print_map.c
+│   ├── ft_process_map.c
+│   ├── ft_string.c
+│   └── ft_util.c
+├── test_maps/            # 35 test map files
 ├── test_bsq.sh           # Comprehensive test script
 └── Documentation files
 ```
 
-## 🔨 Compilation
+## � Recent changes (2026-02-18)
+
+- Code refactored and split into smaller, Norm-compliant functions; all `bsq/` sources now pass `norminette`.
+- Added/renamed source files: `ft_fill_matrix.c`, `ft_free_map.c`, `ft_mark_square.c`, `ft_memory.c`, `ft_parse_header.c`, `ft_print_map.c`, `ft_string.c`.
+- Added missing test fixtures (total test maps: 35) including stress tests: `test15_large.txt` (100×100) and `test16_very_large.txt` (500×500).
+- All tests pass: **35/35**. Valgrind: **no leaks**.
+- Documentation updated (README, QUICK_REFERENCE, TEST_DOCUMENTATION, DEBUG_GUIDE, BSQ_COMPLETE_PACKAGE). See `CHANGELOG.md` for details.
+- Commit will include Co‑authored‑by: Mina Zahir <mina-zahir@users.noreply.github.com>.
+
+## �🔨 Compilation
 
 ```bash
 make        # Build the project
