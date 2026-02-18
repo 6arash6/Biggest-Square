@@ -4,14 +4,16 @@
 
 This package contains everything you need to understand, implement, and test the BSQ project:
 
+**Status (2026-02-18):** code refactored and norminette-clean; documentation updated; tests **35/35** passing; valgrind: no leaks.
+
 ### 1. **Documentation**
 - `BSQ_TUTORIAL.md` - Complete line-by-line explanation
 - `TEST_DOCUMENTATION.md` - Test suite documentation
 - `DEBUG_GUIDE.md` - Quick reference for debugging
 
 ### 2. **Test Suite**
-- `test_bsq.sh` - Comprehensive test script (35+ tests)
-- `test_maps/` - 30 test map files covering all edge cases
+- `test_bsq.sh` - Comprehensive test script (35 tests — all passing)
+- `test_maps/` - 35 test map files covering all edge cases
 
 ### 3. **Source Code** (from GitHub)
 - `bsq.h` - Header file
