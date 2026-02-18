@@ -1,5 +1,7 @@
 # BSQ Debugging Quick Reference
 
+> Update (2026-02-18): code refactored and norminette-clean; documentation and test fixtures updated. Tests: **35/35** passing; valgrind: **no leaks**. See `CHANGELOG.md` for details.
+
 ## Common Issues and Solutions
 
 ### 1. SEGMENTATION FAULT
