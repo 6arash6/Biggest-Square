@@ -48,6 +48,8 @@ int	main(int argc, char **argv)
 		while (i < argc)
 		{
 			ft_process_file(argv[i]);
+			if (i < argc - 1)
+				ft_putstr("\n");
 			i++;
 		}
 	}
