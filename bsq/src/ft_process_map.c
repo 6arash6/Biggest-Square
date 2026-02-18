@@ -1,124 +1,92 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_process_map.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzahirjo <mzahirjo@student.42vienna.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/18 00:00:00 by mzahirjo          #+#    #+#             */
+/*   Updated: 2026/02/18 00:00:00 by mzahirjo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "bsq.h"
 
-int    ft_min(int a, int b, int c)
+static int	ft_min(int a, int b, int c)
 {
-    int    min;
+	int	min;
 
-    min = a;
-    if (b < min)
-        min = b;
-    if (c < min)
-        min = c;
-    return (min);
+	min = a;
+	if (b < min)
+		min = b;
+	if (c < min)
+		min = c;
+	return (min);
 }
 
-void    ft_find_largest_square(t_map *map, t_square *sq)
+static void	ft_update_max(int **dp, int i, int j, int *max_info)
 {
-    int    **dp;
-    int    i;
-    int    j;
-    int    max_size;
-
-    dp = (int **)malloc(sizeof(int *) * map->rows);
-    if (!dp)
-        return ;
-    i = 0;
-    while (i < map->rows)
-    {
-        dp[i] = (int *)malloc(sizeof(int) * map->cols);
-        if (!dp[i])
-            return ;
-        i++;
-    }
-    sq->size = 0;
-    sq->row = 0;
-    sq->col = 0;
-    max_size = 0;
-    i = 0;
-    while (i < map->rows)
-    {
-        j = 0;
-        while (j < map->cols)
-        {
-            if (i == 0 || j == 0)
-                dp[i][j] = map->matrix[i][j];
-            else if (map->matrix[i][j] == 1)
-                dp[i][j] = ft_min(dp[i - 1][j], dp[i][j - 1],
-                        dp[i - 1][j - 1]) + 1;
-            else
-                dp[i][j] = 0;
-            if (dp[i][j] > max_size)
-            {
-                max_size = dp[i][j];
-                sq->size = max_size;
-                sq->row = i - max_size + 1;
-                sq->col = j - max_size + 1;
-            }
-            j++;
-        }
-        i++;
-    }
-    i = 0;
-    while (i < map->rows)
-    {
-        free(dp[i]);
-        i++;
-    }
-    free(dp);
+	if (dp[i][j] > max_info[0])
+	{
+		max_info[0] = dp[i][j];
+		max_info[1] = i;
+		max_info[2] = j;
+	}
 }
 
-void    ft_draw_square(t_map *map, t_square *sq)
+static void	ft_process_dp(t_map *map, int **dp, int *max_info)
 {
-    int    i;
-    int    j;
+	int	i;
+	int	j;
 
-    i = sq->row;
-    while (i < sq->row + sq->size)
-    {
-        j = sq->col;
-        while (j < sq->col + sq->size)
-        {
-            map->matrix[i][j] = 2;
-            j++;
-        }
-        i++;
-    }
+	i = 0;
+	while (i < map->rows)
+	{
+		j = 0;
+		while (j < map->cols)
+		{
+			if (map->matrix[i][j] == 1)
+			{
+				if (i == 0 || j == 0)
+					dp[i][j] = 1;
+				else
+					dp[i][j] = ft_min(dp[i - 1][j], dp[i][j - 1],
+							dp[i - 1][j - 1]) + 1;
+				ft_update_max(dp, i, j, max_info);
+			}
+			else
+				dp[i][j] = 0;
+			j++;
+		}
+		i++;
+	}
 }
 
-void    ft_print_map(t_map *map)
+void	ft_process_map(t_map *map)
 {
-    int    i;
-    int    j;
+	int	**dp;
+	int	max_info[3];
+	int	i;
 
-    i = 0;
-    while (i < map->rows)
-    {
-        j = 0;
-        while (j < map->cols)
-        {
-            if (map->matrix[i][j] == 0)
-                ft_putchar(map->obstacle);
-            else if (map->matrix[i][j] == 1)
-                ft_putchar(map->empty);
-            else
-                ft_putchar(map->full);
-            j++;
-        }
-        ft_putchar('\n');
-        i++;
-    }
-}
-
-void    ft_process_map(t_map *map)
-{
-    t_square    sq;
-
-    if (!map || !map->matrix)
-    {
-        ft_puterror("map error\n");
-        return ;
-    }
-    ft_find_largest_square(map, &sq);
-    ft_draw_square(map, &sq);
-    ft_print_map(map);
+	max_info[0] = 0;
+	max_info[1] = 0;
+	max_info[2] = 0;
+	dp = (int **)malloc(sizeof(int *) * map->rows);
+	if (!dp)
+		return ;
+	i = 0;
+	while (i < map->rows)
+	{
+		dp[i] = (int *)malloc(sizeof(int) * map->cols);
+		i++;
+	}
+	ft_process_dp(map, dp, max_info);
+	ft_mark_square(map, max_info);
+	i = 0;
+	while (i < map->rows)
+	{
+		free(dp[i]);
+		i++;
+	}
+	free(dp);
 }
