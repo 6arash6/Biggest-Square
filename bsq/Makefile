@@ -1,3 +1,15 @@
+# ************************************************************************** */
+#                                                                            */
+#                                                        :::      ::::::::   */
+#   Makefile                                            :+:      :+:    :+:   */
+#                                                    +:+ +:+         +:+     */
+#   By: student <student@student.42.fr>            +#+  +:+       +#+        */
+#                                                +#+#+#+#+#+   +#+           */
+#   Created: 2024/01/01 00:00:00 by student          #+#    #+#             */
+#   Updated: 2024/01/01 00:00:00 by student         ###   ########.fr       */
+#                                                                            */
+# ************************************************************************** */
+
 NAME = bsq
 
 CC = cc
@@ -8,18 +20,23 @@ INCDIR = include
 OBJDIR = obj
 
 SRCS = $(SRCDIR)/main.c \
-       $(SRCDIR)/ft_create_map.c \
-       $(SRCDIR)/ft_get_matrix.c \
-       $(SRCDIR)/ft_get_line.c \
-       $(SRCDIR)/ft_process_map.c \
-       $(SRCDIR)/ft_util.c
+	$(SRCDIR)/ft_string.c \
+	$(SRCDIR)/ft_memory.c \
+	$(SRCDIR)/ft_get_line.c \
+	$(SRCDIR)/ft_parse_header.c \
+	$(SRCDIR)/ft_fill_matrix.c \
+	$(SRCDIR)/ft_get_matrix.c \
+	$(SRCDIR)/ft_process_map.c \
+	$(SRCDIR)/ft_mark_square.c \
+	$(SRCDIR)/ft_print_map.c \
+	$(SRCDIR)/ft_free_map.c
 
 OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -I$(INCDIR) $(OBJS) -o $(NAME)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p $(OBJDIR)
