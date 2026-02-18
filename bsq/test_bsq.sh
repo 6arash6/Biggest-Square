@@ -141,10 +141,17 @@ test_multiple_files() {
     RETVAL=$?
 
     if [ $RETVAL -eq 0 ]; then
-        echo -e "${GREEN}✅ PASSED${NC}"
-        PASSED=$((PASSED + 1))
-        echo "Processed ${#files[@]} files"
-        echo "$OUTPUT" | head -10
+        # ensure there's an empty line between outputs when multiple files provided
+        if echo "$OUTPUT" | grep -q '^$'; then
+            echo -e "${GREEN}✅ PASSED${NC}"
+            PASSED=$((PASSED + 1))
+            echo "Processed ${#files[@]} files"
+            echo "$OUTPUT" | head -10
+        else
+            echo -e "${RED}❌ FAILED: missing blank line between file outputs${NC}"
+            echo "$OUTPUT"
+            FAILED=$((FAILED + 1))
+        fi
     else
         echo -e "${RED}❌ FAILED${NC}"
         echo "$OUTPUT"
